@@ -182,9 +182,9 @@ A similar property
 >     where n = n' `rem` t3length + 1
 >           arr = takeLast n t3
 
--#######################################################################
+-######################################################################
 Here comes a Haskell port of the Omega program tests/WayMarking64.prg #
--#######################################################################
+-######################################################################
 
 Note: the Omega program is the benchmark, and should be changed
       when tweaking the algorithm.
