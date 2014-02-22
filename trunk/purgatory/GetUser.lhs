@@ -169,7 +169,7 @@ Hand-made testcase:
 > di3t 1 acc = close follow
 >                where close ('1':rest) = 's' : 'x' : rest
 >                      close ('2':rest) = 'y' : rest
->                      close (all@('s':_)) = all
+>                      close all@('s':_) = all
 >                      close all = 's' : all
 >                      follow = di3its (length r) r
 >                      r = di3t 0 acc
@@ -222,7 +222,7 @@ Note: the Omega program is the benchmark, and should be changed
 > w15 = [Stop OI, Digit II, Digit OO, Stop II, Stop IO, Stop OI, Digit OI, Digit II, Stop II, Stop IO, Stop OI, Digit II, Stop IO, Stop OI, FullStop]
 
 > countSteps :: Way -> Int
-> countSteps (way@(_ `Step` _)) = howmanysteps 0 way
+> countSteps way@(_ `Step` _) = howmanysteps 0 way
 >   where howmanysteps 0 [] = 0
 >         howmanysteps corr [FullStop] = corr + 1
 >         howmanysteps corr (Stop OI `Step` way) = pickupMarks (corr + 1) way 0
@@ -268,7 +268,7 @@ Note: the Omega program is the benchmark, and should be changed
 > etalon' = l2w etalon
 
 > countAlongTheWay = foldw tupled [(0,[])]
->   where tupled m (l@((_,w):_)) = (countSteps (m `Step` w),(m `Step` w)) : l
+>   where tupled m l@((_,w):_) = (countSteps (m `Step` w),(m `Step` w)) : l
 
 
 -- builds a way of length at least 'min'
@@ -276,9 +276,9 @@ Note: the Omega program is the benchmark, and should be changed
 --
 
 > construct :: Int -> Way -> Way
-> construct min (acc@(Stop II `Step` _)) = if len < min
->                                     then construct min $ (Stop II `Step` Stop IO `Step` Stop OI `Step` prepend len acc)
->                                     else acc
+> construct min acc@(Stop II `Step` _) = if len < min
+>                                        then construct min $ (Stop II `Step` Stop IO `Step` Stop OI `Step` prepend len acc)
+>                                        else acc
 >   where len = countSteps acc
 >         prepend 0 acc = acc
 >         prepend n acc | n `mod` 4 == 0 = prepend (n `div` 4) (Digit OO `Step` acc)
