@@ -1,0 +1,5 @@
+#summary Relevant ideas from other folks.
+
+= `mmap`ping =
+
+http://john.freml.in/mmap-pattern
