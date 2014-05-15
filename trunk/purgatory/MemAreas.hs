@@ -26,7 +26,7 @@ data MetadataArray = MA { mask2header :: Nat, density :: Nat, a :: *, extractor 
 -- means: zero out mask2header bits of the address to get the Header address
 --        take the LSB mask2header bits and shift to the right by density bits
 --        to extract the metadata, then feed that chunk of metadata into the
---        extractor, aslo passing the LSB density bits.
+--        extractor, also passing the LSB density bits.
 
 -- TODO: 1) use ST monad to implemente mutable heap populated by such MAs
 --       2) encode MetadataArray at the type level, using classes to support extraction
