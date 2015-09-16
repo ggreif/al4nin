@@ -1,0 +1,11 @@
+# `mmap`ping #
+
+http://john.freml.in/mmap-pattern
+
+# Iavor's papers #
+
+Especially http://yav.github.io/publications/memory-areas.pdf
+
+# Rebekah Leslie (thesis) #
+
+http://archives.pdx.edu/ds/psu/7118
